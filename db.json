@@ -1,0 +1,19 @@
+{
+  "notes": [
+    {
+      "content": "Bienvenidos a la miduclase",
+      "important": true,
+      "id": 1
+    },
+    {
+      "content": "Gracias backend!",
+      "important": false,
+      "id": 2
+    },
+    {
+      "content": "sfsdfsf",
+      "important": false,
+      "id": 3
+    }
+  ]
+}

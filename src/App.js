@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import Home from './components/Home.jsx';
+import NotesContainer from './components/NotesContainer.jsx';
+import { initNotes } from './reducers/noteReducer.js';
 import './App.css';
+import { NoteDetail } from './components/NoteDetail.jsx';
 
-function App() {
+const App = () => {
+  // Will allow us to use imported actions (DISPATCH FUNCTIONS)
+  const dispatch = useDispatch();
+  const notes = useSelector(state => state.notes);
+
+  // Each time the component have been mounted will show all
+  // the notes that we have in json server db
+  useEffect(() => {
+    dispatch(initNotes())
+  }, [dispatch])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <BrowserRouter>
+      <header>
+        <Link to='/' className='App-link'> Home </Link>
+        <Link to='/notes' className='App-link'> Notes </Link>
+        <Link to='/filters' className='App-link'> Filters </Link>
       </header>
-    </div>
-  );
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/notes/:id' element={<NoteDetail notes={notes} />} />
+        <Route path='/notes' element={<NotesContainer />} />
+
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;
