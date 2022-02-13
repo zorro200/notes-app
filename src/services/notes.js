@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 /**
- * URL where are our notes. In the json server database file or wherever we get them from
+ * URL where are our notes in back-end.
  * @type {*} 
  */
 // const baseUrl = 'http://localhost:3001/notes'
 const baseUrl = 'https://glacial-journey-98158.herokuapp.com/api/notes'
 
 /**
- * Get all notes from json server database file
+ * Get all notes from back-end
  * @return {*} notes
  */
 const getAll = async () => {
