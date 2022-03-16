@@ -12,8 +12,8 @@ const App = () => {
   const dispatch = useDispatch();
   const notes = useSelector(state => state.notes);
 
-  // Each time the component have been mounted will show all
-  // the notes that we have in json server db
+  // Each time the component have been mounted, and dispatch has been updated,
+  // will show all the notes that we have on server side
   useEffect(() => {
     dispatch(initNotes())
   }, [dispatch])

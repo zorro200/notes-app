@@ -27,7 +27,7 @@ export const noteReducer = (state = [], action) => {
 }
 
 
-// ACTIONS --> send info for update redux store
+// ACTIONS ==> send info for update redux store
 // We do async functions as a return because we want to make wait the other part of
 // code until we do something async. And because we want to communicate with a backend,
 // passing through a middleware.
@@ -53,7 +53,7 @@ const toggleImportanceOf = id => {
 
 /**
  * Will send, to the store, all the notes that we have
- * in the json server database file 
+ * on the server side
  *
  * @param {*} notes
  * @return {*}
