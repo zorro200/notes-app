@@ -9,6 +9,7 @@ export const NoteDetail = ({ notes }) => {
   console.log(typeof id)
 
   console.log(note)
+  if (!note) return null
 
   return (
     <div>
