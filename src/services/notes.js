@@ -4,22 +4,22 @@ import axios from 'axios';
  * URL where are our notes in back-end.
  * @type {*} 
  */
-// const baseUrl = 'http://localhost:3001/notes'
-const baseUrl = 'https://glacial-journey-98158.herokuapp.com/api/notes'
+const baseUrl = 'http://localhost:3001/api/notes'
+// const baseUrl = 'https://glacial-journey-98158.herokuapp.com/api/notes'
 
 /**
  * Get all notes from back-end
  * @return {*} notes
  */
 const getAll = async () => {
-  const res = await axios.get(baseUrl)
-  return res.data
+  const { data } = await axios.get(baseUrl)
+  return data
 }
 
 const getImportant = async () => {
-  const res = await axios.get(baseUrl)
+  const { data } = await axios.get(baseUrl)
   const impNotes = [];
-  res.data.map(note => {
+  data.map(note => {
     if (note.important === true) {
       impNotes.push(note);
     }
@@ -29,9 +29,9 @@ const getImportant = async () => {
 }
 
 const getNotImportant = async () => {
-  const res = await axios.get(baseUrl)
+  const { data } = await axios.get(baseUrl)
   const notImpNotes = [];
-  res.data.map(note => {
+  data.map(note => {
     if (note.important === false) {
       notImpNotes.push(note);
     }
@@ -49,8 +49,8 @@ const getNotImportant = async () => {
  */
 const createNew = async (content) => {
   const note = { content, important: false }
-  const res = await axios.post(baseUrl, note);
-  return res.data;
+  const { data } = await axios.post(baseUrl, note);
+  return data;
 }
 
 export { getAll, getImportant, getNotImportant, createNew }
