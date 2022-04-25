@@ -44,12 +44,19 @@ const getNotImportant = async () => {
  * Will create a new note with its structure.
  * The post to json server db URL will assign it an ID.
  * @constant note note's structure
+ * @constant config AxiosRequestConfig
  * @param {*} content note's content
+ * @param {*} token user's token
  * @return {*} new note (data) that we receive from axios post response
  */
-const createNew = async (content) => {
+const createNew = async (content, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
   const note = { content, important: false }
-  const { data } = await axios.post(baseUrl, note);
+  const { data } = await axios.post(baseUrl, note, config);
   return data;
 }
 

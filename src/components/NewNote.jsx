@@ -1,18 +1,21 @@
-import { useDispatch } from "react-redux";
-import { createNote } from "../reducers/noteReducer";
+import { useDispatch, useSelector } from "react-redux"
+import { createNote } from "../reducers/noteReducer"
 
 export default function NewNote() {
   const dispatch = useDispatch()
+  const user = useSelector(state => state.users[0])
 
-  const addNote = async (e) => {
-    e.preventDefault();
+  const addNote = (e) => {
+    e.preventDefault()
 
     const { target } = e
-    const content = target.note.value;
+    const content = target.note.value
 
-    dispatch(createNote(content))
+    if (user !== null) {
+      dispatch(createNote(content, user.token)) 
+    }
 
-    target.note.value = '';
+    target.note.value = ''
   }
 
   return (

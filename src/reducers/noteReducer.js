@@ -32,9 +32,9 @@ export const noteReducer = (state = [], action) => {
 // code until we do something async. And because we want to communicate with a backend,
 // passing through a middleware.
 
-const createNote = content => {
+const createNote = (content, token) => {
   return async (dispatch) => {
-    const newNote = await createNew(content)
+    const newNote = await createNew(content, token)
     
     dispatch({
       type: '@notes/new',
