@@ -31,7 +31,6 @@ const authUser = info => {
 /**
  * Get and dispatch the logged user information to the store
  * whenever we refresh the page
- * @return {*} 
  */
 const loggedUser = () => {
   return async (dispatch) => {
