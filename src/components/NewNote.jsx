@@ -3,7 +3,7 @@ import { createNote } from "../reducers/noteReducer"
 
 export default function NewNote() {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.users[0])
+  const user = useSelector(state => state.users.logged)
 
   const addNote = (e) => {
     e.preventDefault()
