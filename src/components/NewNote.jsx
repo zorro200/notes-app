@@ -12,7 +12,7 @@ export default function NewNote() {
     const content = target.note.value
 
     if (user !== null) {
-      dispatch(createNote(content, user.token)) 
+      dispatch(createNote(content, user.token))
     }
 
     target.note.value = ''
