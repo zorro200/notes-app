@@ -1,8 +1,12 @@
-import { login } from '../services/users';
+import { login, logged } from '../services/users';
 
 export const userReducer = (state = [], action) => {
   if (action.type === '@users/login') {
-    return [...state, action.payload]
+    return { ...state, logged: action.payload }
+  }
+
+  if (action.type === '@users/logged') {
+    return { ...state, logged: action.payload }
   }
   return state
 }
@@ -16,7 +20,7 @@ export const userReducer = (state = [], action) => {
 const authUser = info => {
   return async (dispatch) => {
     const user = await login(info)
-    
+
     dispatch({
       type: '@users/login',
       payload: user
@@ -24,4 +28,20 @@ const authUser = info => {
   }
 }
 
-export { authUser }
+/**
+ * Get and dispatch the logged user information to the store
+ * whenever we refresh the page
+ * @return {*} 
+ */
+const loggedUser = () => {
+  return async (dispatch) => {
+    const user = await logged()
+
+    dispatch({
+      type: '@users/logged',
+      payload: user
+    })
+  }
+}
+
+export { authUser, loggedUser }
