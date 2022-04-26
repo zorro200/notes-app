@@ -29,6 +29,11 @@
   padding: 5px;
 }
 
+button.App-link {
+  border: none;
+  background-color: unset;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

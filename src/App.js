@@ -27,6 +27,11 @@ const App = () => {
     dispatch(loggedUser())
   }, [dispatch])
 
+  const handleLogout = () => {
+    window.localStorage.removeItem('loggedUser')
+    dispatch(loggedUser())
+  }
+
   return (
     <BrowserRouter>
       <header>
@@ -37,6 +42,7 @@ const App = () => {
               <Link to='/notes' className='App-link'> Notes </Link>
               <Link to='/filters' className='App-link'> Filters </Link>
               <em>Logged as {user.nick}</em>
+              <button onClick={handleLogout} className='App-link'> Logout </button>
             </>
             : <Link to='/login' className='App-link'> Login </Link>
         }
