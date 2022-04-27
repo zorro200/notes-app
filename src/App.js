@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import NotesContainer from './components/NotesContainer.jsx';
 import { initNotes } from './reducers/noteReducer.js';
@@ -21,9 +21,6 @@ const App = () => {
   // the logged user
   useEffect(() => {
     dispatch(initNotes())
-  }, [dispatch])
-
-  useEffect(() => {
     dispatch(loggedUser())
   }, [dispatch])
 
@@ -49,7 +46,7 @@ const App = () => {
       </header>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={user ? <Home /> : <Login />} />
         <Route path='/notes/:id' element={<NoteDetail notes={notes} />} />
         <Route path='/notes' element={<NotesContainer />} />
 
